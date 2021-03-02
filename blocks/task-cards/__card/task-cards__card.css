@@ -1,0 +1,9 @@
+.task-cards__card {
+    margin: 10px 0 0 0;
+    padding: 15px 22px 15px 9px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+}
