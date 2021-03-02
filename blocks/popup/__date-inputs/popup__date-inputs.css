@@ -1,0 +1,9 @@
+.popup__date-inputs {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    outline-style: none;
+    border: none;
+}

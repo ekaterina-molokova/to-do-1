@@ -1,0 +1,27 @@
+.popup__input {
+    margin: 0 auto 45px auto;
+    padding: 0;
+    box-sizing: border-box;
+    width: 90%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.55);
+    outline-style: none;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #050505;
+    text-align: justify;
+}
+
+.popup__input::placeholder {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.2;
+    color: rgba(124, 135, 165, 0.598222);
+    font-family: "Inter", sans-serif;
+}

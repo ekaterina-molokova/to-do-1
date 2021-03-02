@@ -1,0 +1,16 @@
+.popup__new-task-form {
+    margin: 30px auto 0 auto;
+    padding: 25px 0 0 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 335px;
+    height: 605px;
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.185434);
+    border-radius: 3px;
+    outline-style: none;
+    font-family: "Inter", sans-serif;
+    z-index: 5;
+}
