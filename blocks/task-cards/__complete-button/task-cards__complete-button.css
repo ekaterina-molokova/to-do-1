@@ -1,5 +1,5 @@
 .task-cards__complete-button {
-    background-image: url("../../../images/complete-button.svg");
+    background-image: url("../../../images/complete-button-inactive.svg");
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
@@ -7,7 +7,6 @@
     width: 16px;
     height: 16px;
     mix-blend-mode: normal;
-    opacity: .37;
     border: none;
     outline-style: none;
 }

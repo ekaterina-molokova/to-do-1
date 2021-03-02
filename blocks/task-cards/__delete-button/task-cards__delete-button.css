@@ -1,8 +1,7 @@
 .task-cards__delete-button {
     display: flex;
-    background-image: url("../../../images/delete-button.svg");
+    background-image: url("../../../images/del.svg");
     background-color: transparent;
-    color: #FF5C5C;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
