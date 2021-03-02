@@ -1,0 +1,22 @@
+.header__add-button {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    width: 75%;
+    height: 50px;
+    outline-style: none;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 100px;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.14;
+    color: #221738;
+    text-align: center;
+}
+
+.header__add-button:hover {
+    cursor: pointer;
+    opacity: .5;
+}

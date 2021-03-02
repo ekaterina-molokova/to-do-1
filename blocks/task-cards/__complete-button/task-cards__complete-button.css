@@ -10,3 +10,7 @@
     border: none;
     outline-style: none;
 }
+
+.task-cards__complete-button:hover {
+    cursor: pointer;
+}

@@ -9,3 +9,9 @@
     text-align: justify;
     color: #050505;
 }
+
+.task-cards__details:hover {
+    cursor: pointer;
+    opacity: .5;
+    text-decoration: underline;
+}

@@ -14,3 +14,8 @@
     outline-style: none;
     border: none;
 }
+
+.task-cards__delete-button:hover {
+    cursor: pointer;
+    opacity: .5;
+}
