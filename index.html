@@ -6,11 +6,11 @@
     <meta name="description" content="Сервис с интерактивным календарем для создания списков дел">
     <meta name="keywords" content="календарь, списки, расписание, распорядок">
     <link rel="stylesheet" href="./pages/index.css">
-    <link rel="stylesheet" href="./style.css"> <!-- добавил стили в виде простыни, разобью потом сам их -->
     <title>ToDo</title>
-    <script src="./scripts/index.js" defer></script> <!-- можно переставить вниз, не принципиально -->
+    <script src="./scripts/index.js" defer></script>
 </head>
 <body class="body">
+<<<<<<< HEAD
   <div class="page">
       <header class="header"></header>
 
@@ -68,6 +68,49 @@
 
       <footer class="footer"></footer>
   </div>
+=======
+<div class="page">
+    <header class="header"></header>
+    <main class="content">
+        <section class="calendar"></section>
+        <section class="task-cards">
+            <ul class="task-cards__container">
+                <!--<template class="template">-->
+                <h2 class="task-cards__title">В этом месяце</h2>
+                <li class="task-cards__card">
+                    <button class="task-cards__complete-button" type="button" name="complete-button"></button>
+                    <h3 class="task-cards__task">Сделать приложение</h3>
+                    <p class="task-cards__date">2 марта</p>
+                    <div class="task-cards__dot"></div>
+                    <p class="task-cards__time">12:00</p>
+                </li>
+            <!--</template>-->
+              </ul>
+      </section>
+      <section class="task-cards task-cards_selected-day">
+            <ul class="task-cards__container">
+                <h2 class="task-cards__title">2 марта</h2>
+                <li class="task-cards__card_selected-day task-cards__card_selected-day">
+                    <div class="task-cards__row">
+                        <button class="task-cards__complete-button" type="button" name="complete-button"></button>
+                        <h3 class="task-cards__task">Сделать приложение</h3>
+                        <p class="task-cards__date">2 марта</p>
+                        <div class="task-cards__dot"></div>
+                        <p class="task-cards__time">12:00</p>
+                    </div>
+                    <div class="task-cards__row">
+                        <p class="task-cards__details">Смотреть детали</p>
+                        <div class="task-cards__line">
+                            <button class="task-cards__delete-button" type="button" name="delete-button"></button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer"></footer>
+</div>
+>>>>>>> 92d4d493e3007e4557c1101e9769c6a948e60221
 <section class="popup"></section>
 </body>
 </html>

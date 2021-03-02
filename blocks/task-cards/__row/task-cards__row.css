@@ -1,0 +1,12 @@
+.task-cards__row {
+    margin: 0 0 28px 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.task-cards__row:last-child {
+    margin-bottom: 0;
+}
