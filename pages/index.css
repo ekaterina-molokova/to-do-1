@@ -23,3 +23,11 @@
 @import url("../blocks/task-cards/__details/task-cards__details.css");
 @import url("../blocks/task-cards/__delete-button/task-cards__delete-button.css");
 @import url("../blocks/task-cards/__line/task-cards__line.css");
+
+/*даты + дни недели*/
+@import url("../blocks/current-month/current-month.css");
+@import url("../blocks/calendar/__week-days-list/calendar__week-days-list.css");
+@import url("../blocks/calendar/__week-day/calendar__week-day.css");
+@import url("../blocks/calendar/__dates-list/calendar__dates-list.css");
+@import url("../blocks/calendar/__date/calendar__date.css");
+

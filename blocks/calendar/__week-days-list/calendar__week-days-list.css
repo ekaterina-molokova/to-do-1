@@ -1,0 +1,13 @@
+.calendar__week-days-list {
+  display: flex;
+  padding: 0;
+  padding-left: 15px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  margin: 0;
+  margin-bottom: 15px;
+
+  list-style: none;
+
+  border-bottom: 1px solid #DFDFE4;
+}
