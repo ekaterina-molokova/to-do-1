@@ -6,18 +6,68 @@
     <meta name="description" content="Сервис с интерактивным календарем для создания списков дел">
     <meta name="keywords" content="календарь, списки, расписание, распорядок">
     <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./style.css"> <!-- добавил стили в виде простыни, разобью потом сам их -->
     <title>ToDo</title>
-    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/index.js" defer></script> <!-- можно переставить вниз, не принципиально -->
 </head>
 <body class="body">
-<div class="page">
-    <header class="header"></header>
-    <main class="content">
-        <section class="calendar"></section>
-        <section class="task-cards"></section>
-    </main>
-    <footer class="footer"></footer>
-</div>
+  <div class="page">
+      <header class="header"></header>
+
+      <main class="content">
+          <section class="calendar">
+            <div class="calendar__week-days">
+              <div class="calendar__day">Mo</div>
+              <div class="calendar__day">Tu</div>
+              <div class="calendar__day">We</div>
+              <div class="calendar__day">Th</div>
+              <div class="calendar__day">Fr</div>
+              <div class="calendar__day">Sa</div>
+              <div class="calendar__day">Su</div>
+            </div>
+            
+
+            <div class="calendar__dates">
+              <div>1</div>
+              <div>1</div>
+              <div>1</div>
+              <div>1</div>
+              <div>1</div>
+              <div>1</div>
+              <div>1</div>
+
+              <div>2</div>
+              <div>2</div>
+              <div>2</div>
+              <div>2</div>
+              <div>2</div>
+              <div>2</div>
+              <div>2</div>
+
+              <div>3</div>
+              <div>3</div>
+              <div>3</div>
+              <div>3</div>
+              <div>3</div>
+              <div>3</div>
+              <div>3</div>
+
+              <div>4</div>
+              <div>4</div>
+              <div>4</div>
+              <div>4</div>
+              <div>4</div>
+              <div>4</div>
+              <div>4</div>
+            </div>
+
+          </section>
+
+          <section class="task-cards"></section>
+      </main>
+
+      <footer class="footer"></footer>
+  </div>
 <section class="popup"></section>
 </body>
 </html>
