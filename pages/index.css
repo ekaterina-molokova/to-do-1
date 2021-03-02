@@ -17,3 +17,9 @@
 @import url("../blocks/task-cards/__date/task-cards__date.css");
 @import url("../blocks/task-cards/__time/task-cards__time.css");
 @import url("../blocks/task-cards/__dot/task-cards__dot.css");
+@import url("../blocks/task-cards/_selected-day/task-cards_selected-day.css");
+@import url("../blocks/task-cards/__card/_selected-day/task-cards__card_selected-day.css");
+@import url("../blocks/task-cards/__row/task-cards__row.css");
+@import url("../blocks/task-cards/__details/task-cards__details.css");
+@import url("../blocks/task-cards/__delete-button/task-cards__delete-button.css");
+@import url("../blocks/task-cards/__line/task-cards__line.css");

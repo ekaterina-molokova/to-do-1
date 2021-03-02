@@ -1,0 +1,11 @@
+.task-cards__details {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: justify;
+    color: #050505;
+}
