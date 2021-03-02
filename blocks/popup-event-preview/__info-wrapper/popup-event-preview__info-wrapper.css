@@ -1,0 +1,15 @@
+.popup-event-preview__info-wrapper {
+  display: flex;
+  margin-bottom: 1px;
+  
+  /* font-family: Raleway; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height */
+
+  text-align: justify;
+
+  color: #050505;
+}

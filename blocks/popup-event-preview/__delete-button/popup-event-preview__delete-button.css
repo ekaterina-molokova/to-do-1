@@ -1,0 +1,15 @@
+.popup-event-preview__delete-button {
+  display: block;
+  /* font-family: Raleway; */
+  font-style: normal;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 13px;
+  /* identical to box height */
+
+  text-align: justify;
+  letter-spacing: 1px;
+
+  color: #FFFFFF;
+
+}

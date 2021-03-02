@@ -1,0 +1,17 @@
+.popup-event-preview__event-description {
+  /* font-family: Raleway; */
+  margin: 0;
+  margin-bottom: 26px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  /* or 143% */
+
+  display: flex;
+  align-items: center;
+  text-align: justify;
+
+  color: #050505;
+
+}

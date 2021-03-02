@@ -31,3 +31,17 @@
 @import url("../blocks/calendar/__dates-list/calendar__dates-list.css");
 @import url("../blocks/calendar/__date/calendar__date.css");
 
+
+
+/*превью модальное окно*/
+@import url("../blocks/popup-event-preview/popup-event-preview.css");
+@import url("../blocks/popup-container/popup-container.css");
+@import url("../blocks/popup-event-preview/__title/popup-event-preview__title.css");
+@import url("../blocks/popup-event-preview/__info-wrapper/popup-event-preview__info-wrapper.css");
+@import url("../blocks/popup-event-preview/__preview-date/popup-event-preview__preview-date.css");
+@import url("../blocks/popup-event-preview/__preview-time/popup-event-preview__preview-time.css");
+@import url("../blocks/popup-event-preview/__event-description/popup-event-preview__event-description.css");
+@import url("../blocks/popup-event-preview/__complete-checkbox/popup-event-preview__complete-status.css");
+@import url("../blocks/popup-event-preview/__label/popup-event-preview__label.css");
+@import url("../blocks/popup-event-preview/__delete-button/popup-event-preview__delete-button.css");
+
