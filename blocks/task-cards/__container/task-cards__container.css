@@ -1,0 +1,7 @@
+.task-cards__container {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    width: 75%;
+    list-style: none;
+}

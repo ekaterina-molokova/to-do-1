@@ -1,3 +1,11 @@
 .task-cards {
-
+    background-color: #221738;
+    margin: 0 auto;
+    padding: 20px 0 25px 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
