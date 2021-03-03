@@ -1,5 +1,5 @@
 .popup-event-preview {
-  visibility: visible;
+  visibility: hidden;
   display: flex;
   position: fixed;
   justify-content: center;
