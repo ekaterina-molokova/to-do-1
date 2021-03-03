@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Сервис с интерактивным календарем для создания списков дел">
-    <meta name="keywords" content="календарь, списки, расписание, распорядок">
+    <meta name="description" content="Service with an interactive calendar for creating to-do lists">
+    <meta name="keywords" content="calendar, lists, to-do">
     <link rel="stylesheet" href="./pages/index.css">
     <title>ToDo</title>
     <script src="./scripts/index.js" defer></script>
@@ -12,8 +12,8 @@
 <body class="body">
     <div class="page">
         <header class="header">
-            <h1 class="header__title">Ту-ду!</h1>
-            <button class="header__add-button">Что будем делать?</button>
+            <h1 class="header__title">To-Do</h1>
+            <button class="header__add-button">What will you to do?</button>
         </header>
         <main class="content">
             <section class="calendar">
@@ -65,11 +65,11 @@
             </section>
             <section class="task-cards">
                 <ul class="task-cards__container">
-                    <h2 class="task-cards__title">В этом месяце</h2>
+                    <h2 class="task-cards__title">This month</h2>
                     <li class="task-cards__card">
                         <button class="task-cards__complete-button" type="button" name="complete-button"></button>
-                        <h3 class="task-cards__task">Сделать приложение</h3>
-                        <p class="task-cards__date">2 марта</p>
+                        <h3 class="task-cards__task">New task</h3>
+                        <p class="task-cards__date">2nd March</p>
                         <div class="task-cards__dot"></div>
                         <p class="task-cards__time">12:00</p>
                     </li>
@@ -77,17 +77,17 @@
         </section>
         <section class="task-cards task-cards_selected-day">
                 <ul class="task-cards__container">
-                    <h2 class="task-cards__title">2 марта</h2>
+                    <h2 class="task-cards__title">2nd March</h2>
                     <li class="task-cards__card_selected-day task-cards__card_selected-day">
                         <div class="task-cards__row">
                             <button class="task-cards__complete-button" type="button" name="complete-button"></button>
-                            <h3 class="task-cards__task">Сделать приложение</h3>
-                            <p class="task-cards__date">2 Марта</p>
+                            <h3 class="task-cards__task">New task</h3>
+                            <p class="task-cards__date">2nd March</p>
                             <div class="task-cards__dot"></div>
                             <p class="task-cards__time">12:00</p>
                         </div>
                         <div class="task-cards__row">
-                            <p class="task-cards__details">Смотреть детали</p>
+                            <p class="task-cards__details">View details</p>
                             <div class="task-cards__line">
                                 <button class="task-cards__delete-button" type="button" name="delete-button"></button>
                             </div>
@@ -117,24 +117,24 @@
 
     <!-- <section class="popup">
         <form class="popup__new-task-form">
-            <h2 class="popup__form-title">Создать новое задание</h2>
-            <label class="popup__label" for="topic">Тема</label>
+            <h2 class="popup__form-title">Create new task</h2>
+            <label class="popup__label" for="topic">Topic</label>
             <input class="popup__input popup__topic"
                        type="text"
                        value=""
                        name="topic"
                        id="topic"
-                       placeholder="Название цели"
+                       placeholder="Write topic"
                        required
                        minlength="2"
                        maxlength="40">
-            <label class="popup__label" for="description">Описание</label>
+            <label class="popup__label" for="description">Description</label>
             <input class="popup__input popup__description"
                    id="description"
                    type="text"
                    value=""
                    name="description"
-                   placeholder="Описание вашей цели"
+                   placeholder="Write description"
                    required
                    minlength="2"
                    maxlength="40">
@@ -143,22 +143,22 @@
                        type="number"
                        value=""
                        name="date"
-                       placeholder="Число"
+                       placeholder="Day"
                        required>
                 <input class="popup__input popup__month"
                        type="text"
                        value=""
                        name="month"
-                       placeholder="Месяц"
+                       placeholder="Month"
                        required>
                 <input class="popup__input popup__year"
                        type="number"
                        value=""
                        name="year"
-                       placeholder="Год"
+                       placeholder="Year"
                        required>
             </fieldset>
-            <label class="popup__label" for="time">Время</label>
+            <label class="popup__label" for="time">Time</label>
             <input class="popup__input popup__time"
                    id="time"
                    type="time"
@@ -166,13 +166,13 @@
                    name="time"
                    placeholder="00:00"
                    required>
-            <label class="popup__label" for="color">Выберите индивидуальный цвет</label>
+            <label class="popup__label" for="color">Choose color</label>
             <input class="popup__color"
                    id="color"
                    type="color"
                    value="#E3B65B"
                    name="color">
-            <button class="popup__add-button">ДОБАВИТЬ</button>
+            <button class="popup__add-button">ADD</button>
         </form>
     </section> -->
 </body>
