@@ -56,11 +56,9 @@ function submitNewTaskPopup (evt) {
     cardTimeMonthView.textContent = timeInput.value;
     cardTimeDayView.textContent = timeInput.value;
     closeNewTaskPopup(newTaskPopup);
-}
 
 addButton.addEventListener("click", () => {
     openNewTaskPopup(newTaskPopup)
 });
 
 newTaskForm.addEventListener("submit", submitNewTaskPopup);
-

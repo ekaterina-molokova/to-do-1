@@ -11,6 +11,6 @@
     box-sizing: border-box;
     z-index: 3;
     backdrop-filter: blur(12px);
-    /* opacity: 0;
-    transition: opacity 200ms, visibility 0s 200ms; */
+    opacity: 0;
+    transition: opacity 200ms, visibility 0s 200ms;
 }
