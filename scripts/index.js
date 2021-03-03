@@ -16,11 +16,26 @@ const cardTimeDayView = taskCardDayView.querySelector(".task-cards__time");
 
 function openNewTaskPopup (newTaskPopup) {
     newTaskPopup.classList.add("popup_opened");
+    document.addEventListener("keydown", closeViaEsc);
 }
 
 function closeNewTaskPopup (newTaskPopup) {
     newTaskPopup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", closeViaEsc);
 }
+
+function closeViaEsc (evt) {
+    if (evt.key === "Escape") {
+        const openedPopup = document.querySelector(".popup_opened");
+        openedPopup.classList.remove("popup_opened");
+    }
+}
+
+newTaskPopup.addEventListener("click", function (evt){
+        if(evt.target.classList.contains("popup")) {
+            closeNewTaskPopup (newTaskPopup);
+        }
+    });
 
 function submitNewTaskPopup (evt) {
     evt.preventDefault();
