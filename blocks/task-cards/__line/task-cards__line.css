@@ -1,7 +1,7 @@
 .task-cards__line {
     margin: 0;
     padding: 0 0 0 10px;
-    box-sizing: 0;
+    box-sizing: border-box;
     mix-blend-mode: normal;
-    border-left: 1px solid #979797;
+    border-left: 1px solid rgba(151, 151, 151, 0.44);
 }
