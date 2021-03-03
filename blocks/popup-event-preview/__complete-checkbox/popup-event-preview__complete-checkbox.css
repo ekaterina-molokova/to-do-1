@@ -1,5 +1,5 @@
 .popup-event-preview__complete-checkbox {
   display: inline-block;
   cursor: pointer;
-  
+  /*удалить из ксс и index.css + папку*/
 }

@@ -3,11 +3,17 @@
   margin-bottom: 22px;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 18px;
+  line-height: 18px;
   /* identical to box height */
   
   text-align: justify;
+  cursor: pointer;
   
   color: #FFFFFF;
+}
+
+.current-month:hover {
+  text-decoration: underline;
+  opacity: 0.7;
 }

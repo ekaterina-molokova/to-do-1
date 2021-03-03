@@ -9,8 +9,8 @@
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    background: rgba(0, 0, 0, .5);
     z-index: 3;
+    backdrop-filter: blur(12px);
     /* opacity: 0;
     transition: opacity 200ms, visibility 0s 200ms; */
 }

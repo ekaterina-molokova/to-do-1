@@ -1,5 +1,4 @@
 .popup-event-preview {
-  visibility: hidden;
   display: flex;
   position: fixed;
   justify-content: center;
@@ -17,5 +16,5 @@
   transition: opacity 200ms, visibility 0s 200ms; */
 
   background: rgba(77, 77, 77, 0.52);
-  backdrop-filter: blur(12px);
+  padding-top: 150px;
 }
