@@ -2,9 +2,12 @@ const newTaskPopup = document.querySelector(".popup_new-task");
 const newTaskForm = newTaskPopup.querySelector(".popup__new-task-form");
 const addButton = document.querySelector(".header__add-button");
 const topicInput = newTaskPopup.querySelector(".popup__topic");
+const descriptionInput = newTaskPopup.querySelector(".popup__description");
 const dateInput = newTaskPopup.querySelector(".popup__date");
 const monthInput = newTaskPopup.querySelector(".popup__month");
+const yearInput = newTaskPopup.querySelector(".popup__year");
 const timeInput = newTaskPopup.querySelector(".popup__time");
+const colorInput = newTaskPopup.querySelector(".popup__color");
 const taskCardMonthView = document.querySelector(".task-cards");
 const taskCardDayView = document.querySelector(".task-cards_selected-day");
 const cardTaskMonthView = taskCardMonthView.querySelector(".task-cards__task");
@@ -22,6 +25,13 @@ function openNewTaskPopup (newTaskPopup) {
 function closeNewTaskPopup (newTaskPopup) {
     newTaskPopup.classList.remove("popup_opened");
     document.removeEventListener("keydown", closeViaEsc);
+    topicInput.value = "";
+    descriptionInput.value = "";
+    dateInput.value = "";
+    monthInput.value = "";
+    yearInput.value = "";
+    timeInput.value = "";
+    colorInput.value = "#E3B65B";
 }
 
 function closeViaEsc (evt) {
