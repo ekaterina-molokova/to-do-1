@@ -1,6 +1,6 @@
-.popup_-color {
+.popup__color {
     margin: 0 auto;
     padding: 0;
+    margin-left: 16px;
     box-sizing: border-box;
-    width: 90%;
 }
