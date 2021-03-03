@@ -1,10 +1,13 @@
 .popup-container {
   width: 335px;
-  height: 305px;
+  height: 276px;
   padding-top: 19px;
   padding-left: 19px;
   padding-right: 21px;
-
+  box-sizing: border-box;
   
   background-color: #ffffff;
+
+  border-radius: 3px;
+
 }

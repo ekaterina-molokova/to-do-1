@@ -1,8 +1,10 @@
 .popup-event-preview__title {
   /* font-family: Raleway; */
+  position: relative;
   margin: 0;
   margin-bottom: 17px;
   font-style: normal;
+  padding-left: 30px;
   font-weight: bold;
   font-size: 18px;
   line-height: 21px;
@@ -11,4 +13,18 @@
   text-align: justify;
 
   color: #050505;
+}
+
+.popup-event-preview__title::after {
+  content: '';
+  position: absolute;
+  width: 99px;
+  height: 3px;
+  right: 34px;
+  top: 8px;
+
+  mix-blend-mode: normal;
+  opacity: 0.36;
+  background-color: #979797;
+
 }

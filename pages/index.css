@@ -52,7 +52,7 @@
 @import url("../blocks/popup-event-preview/__preview-date/popup-event-preview__preview-date.css");
 @import url("../blocks/popup-event-preview/__preview-time/popup-event-preview__preview-time.css");
 @import url("../blocks/popup-event-preview/__event-description/popup-event-preview__event-description.css");
-@import url("../blocks/popup-event-preview/__complete-checkbox/popup-event-preview__complete-status.css");
+@import url("../blocks/popup-event-preview/__complete-checkbox/popup-event-preview__complete-checkbox.css");
 @import url("../blocks/popup-event-preview/__label/popup-event-preview__label.css");
 @import url("../blocks/popup-event-preview/__delete-button/popup-event-preview__delete-button.css");
 

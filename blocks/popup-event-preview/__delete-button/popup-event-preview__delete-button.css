@@ -1,5 +1,9 @@
 .popup-event-preview__delete-button {
   display: block;
+  width: 335px;
+  margin-left: -19px;
+  box-sizing: border-box;
+  padding: 20px 20px 17px 20px;
   /* font-family: Raleway; */
   font-style: normal;
   font-weight: bold;
@@ -7,9 +11,15 @@
   line-height: 13px;
   /* identical to box height */
 
-  text-align: justify;
+  border: none;
+  text-align: center;
   letter-spacing: 1px;
 
   color: #FFFFFF;
+  background-color:#FF5C5C;
 
+  background-image: url('../../../images/del.svg');
+  background-repeat: no-repeat;
+  background-position: 95px 14px;
+  cursor: pointer;
 }

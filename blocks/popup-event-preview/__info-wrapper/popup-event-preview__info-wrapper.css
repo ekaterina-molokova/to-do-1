@@ -1,6 +1,8 @@
 .popup-event-preview__info-wrapper {
   display: flex;
-  margin-bottom: 1px;
+  padding-bottom: 30px;
+  padding-left: 19px;
+  padding-right: 21px;
   
   /* font-family: Raleway; */
   font-style: normal;
@@ -10,6 +12,11 @@
   /* identical to box height */
 
   text-align: justify;
+
+  background-image: url(../../../images/calendar-icon.svg);
+  background-size: 21px 21px;
+  background-repeat: no-repeat;
+  background-position: 10px top;
 
   color: #050505;
 }
