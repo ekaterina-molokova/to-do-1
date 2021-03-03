@@ -19,6 +19,7 @@
 @import url("../blocks/popup/__year/popup__year.css");
 @import url("../blocks/popup/__add-button/popup__add-button.css");
 @import url("../blocks/popup/__color/popup__color.css");
+@import url("../blocks/popup/_new-task/popup_new-task.css");
 @import url("../blocks/task-cards/__container/task-cards__container.css");
 @import url("../blocks/task-cards/__card/task-cards__card.css");
 @import url("../blocks/task-cards/__title/task-cards__title.css");
