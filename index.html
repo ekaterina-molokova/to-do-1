@@ -64,8 +64,8 @@
 
             </section>
             <section class="task-cards">
+                <h2 class="task-cards__title">This month</h2>
                 <ul class="task-cards__container">
-                    <h2 class="task-cards__title">This month</h2>
                     <li class="task-cards__card">
                         <button class="task-cards__complete-button" type="button" name="complete-button"></button>
                         <h3 class="task-cards__task">New task</h3>
@@ -76,29 +76,28 @@
                 </ul>
         </section>
         <section class="task-cards task-cards_selected-day">
-                <ul class="task-cards__container">
-                    <h2 class="task-cards__title">2nd March</h2>
-                    <li class="task-cards__card_selected-day task-cards__card_selected-day">
-                        <div class="task-cards__row">
-                            <button class="task-cards__complete-button" type="button" name="complete-button"></button>
-                            <h3 class="task-cards__task">New task</h3>
-                            <p class="task-cards__date">2nd March</p>
-                            <div class="task-cards__dot"></div>
-                            <p class="task-cards__time">12:00</p>
-                        </div>
-                        <div class="task-cards__row">
-                            <p class="task-cards__details">View details</p>
-                            <div class="task-cards__line">
+            <h2 class="task-cards__title">2nd March</h2>
+            <ul class="task-cards__container">
+                <li class="task-cards__card_selected-day task-cards__card_selected-day">
+                    <div class="task-cards__row">
+                        <button class="task-cards__complete-button" type="button" name="complete-button"></button>
+                        <h3 class="task-cards__task">New task</h3>
+                        <p class="task-cards__date">2nd March</p>
+                        <div class="task-cards__dot"></div>
+                        <p class="task-cards__time">12:00</p>
+                    </div>
+                    <div class="task-cards__row">
+                        <p class="task-cards__details">View details</p>
+                        <div class="task-cards__line">
                                 <button class="task-cards__delete-button" type="button" name="delete-button"></button>
-                            </div>
                         </div>
-                    </li>
-                </ul>
-            </section>
+                    </div>
+                </li>
+            </ul>
+        </section>
         </main>
-        <footer class="footer"></footer>
     </div>
-    <section class="popup-event-preview">
+    <section class="popup popup-event-preview">
         <div class="popup-container">
             <h2 class="popup-event-preview__title popup-event-preview__title_type_complete">Meet Lorence</h2>
             <div class="popup-event-preview__info-wrapper">
@@ -107,8 +106,8 @@
                 <span class="popup-event-preview__preview-time">6 pm</span>
             </div>
             <p class="popup-event-preview__event-description">The monkey-rope is found in all whalers; but it was only in the Pequod that the monkey and his holder.</p>
-            <input class="popup-event-preview__complete-checkbox" id="completed-event-status" type="checkbox">
-            <label class="popup-event-preview__label" for="completed-event-status">completed</label>
+            <button class="task-cards__complete-button" type="button" name="complete-button"></button>
+            <label class="popup-event-preview__label">completed</label>
             <button class="popup-event-preview__delete-button">Delete</button>
         </div>
     </section>
@@ -169,7 +168,7 @@
                    type="color"
                    value="#E3B65B"
                    name="color">
-            <button class="popup__add-button">ADD</button>
+            <button class="popup__add-button">Add</button>
         </form>
     </section>
 </body>

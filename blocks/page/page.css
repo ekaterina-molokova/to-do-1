@@ -7,7 +7,6 @@
     box-sizing: border-box;
     font-family: 'Inter', 'Arial', sans-serif;
     background-color: #140A26;
-    min-width: 320px;
     max-width: 375px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;

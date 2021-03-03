@@ -4,7 +4,6 @@
   margin-left: -19px;
   box-sizing: border-box;
   padding: 20px 20px 17px 20px;
-  /* font-family: Raleway; */
   font-style: normal;
   font-weight: bold;
   font-size: 11px;
@@ -18,7 +17,7 @@
   color: #FFFFFF;
   background-color:#FF5C5C;
 
-  background-image: url('../../../images/del.svg');
+  background-image: url('../../../images/white-bin.svg');
   background-repeat: no-repeat;
   background-position: 95px 14px;
   cursor: pointer;
