@@ -1,0 +1,13 @@
+.popup__pseudo-input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background-color: #E3B65B;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.147277);
+}
