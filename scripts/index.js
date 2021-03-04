@@ -142,5 +142,7 @@ dayTaskDetails.addEventListener("click", ()=> {
 
 currentMonth.addEventListener("click", () => {
     const openedPopup = document.querySelector(".popup_opened");
-    openedPopup.classList.remove("popup_opened");
+    if (openedPopup) {
+        openedPopup.classList.remove("popup_opened");
+    }
 });
