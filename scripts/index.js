@@ -31,6 +31,7 @@ const dayTaskTime = taskCardDayView.querySelector(".task-cards__time");
 const dayTaskDetails = taskCardDayView.querySelector(".task-cards__details");
 
     // переменные дней-дат
+const currentMonth = document.querySelector(".current-month");
 const dayDatesList = document.querySelectorAll(".calendar__date");
 
 // Функции
@@ -137,4 +138,9 @@ dayDatesList.forEach(date => {
 
 dayTaskDetails.addEventListener("click", ()=> {
     openEventPreviewPopup(eventPreviewPopup);
+});
+
+currentMonth.addEventListener("click", () => {
+    const openedPopup = document.querySelector(".popup_opened");
+    openedPopup.classList.remove("popup_opened");
 });
