@@ -61,7 +61,7 @@ function submitNewTaskPopup(evt) {
     // желательно перейти в функцию, которая генерирует эти самые картчоки из template-ов
     // в не собирается все это:
 
-    cardTaskNameMonth.textContent = topicInput.value;
+    monthTaskName.textContent = topicInput.value;
     dayTaskName.textContent = topicInput.value;
     monthTaskDate.textContent = dateInput.value + " " + monthInput.value;
     dayTaskDate.textContent = dateInput.value + " " + monthInput.value;
