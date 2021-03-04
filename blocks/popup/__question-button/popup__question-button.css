@@ -1,0 +1,21 @@
+.popup__question_button {
+    background-image: url("../../../images/questionMark.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 16px;
+    height: 16px;
+    color: #A79D9D;
+    border: none;
+    outline-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.popup__question_button:hover {
+    cursor: pointer;
+    opacity: .5;
+}
