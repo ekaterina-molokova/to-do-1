@@ -28,6 +28,8 @@ const dayTaskName = taskCardDayView.querySelector(".task-cards__task");
 const dayTaskDate = taskCardDayView.querySelector(".task-cards__date");
 const dayTaskTime = taskCardDayView.querySelector(".task-cards__time");
 
+    // переменные дней-дат
+const dayDatesList = document.querySelectorAll(".calendar__date");
 
 // Функции
     // открыть модальное окно "добавить новое дело"
@@ -71,6 +73,25 @@ function submitNewTaskPopup(evt) {
 }
 
 
+// Никита
+    // сделать кликнутую дату активной (фон-кружочек)
+function makeActiveDayOnCLick(cell) {
+    // если у тебя нету ни одной выбранной даты при старте, то у тебя ломается скрипт, т.к тут Null ловится, надо по другому проверять через if
+    const oldActiveCell = document.querySelector(".calendar__date_active");
+    oldActiveCell.classList.toggle("calendar__date_active");
+
+    cell.classList.toggle("calendar__date_active");
+}
+
+function openDetailedSheduleForActiveDay(day) {
+
+    // подстановка числа в тайтл модального окна
+    const currentDayNumber = taskCardDayView.querySelector(".current-day");
+    currentDayNumber.textContent = day.textContent;
+
+    // октрытие модалки
+    taskCardDayView.classList.add("popup_opened")
+}
 
 // Слушатели
     // кнопка открытия модального окна "добавить новое дело"
@@ -85,3 +106,14 @@ newTaskPopup.addEventListener("click", function (evt){
 });
     // слушатель сабмит кнопки формы "добавить новое дело"
 newTaskFormElement.addEventListener("submit", submitNewTaskPopup);
+
+    // дни-даты, при клике кружок
+dayDatesList.forEach(date => {
+    date.addEventListener('click', (event) => {
+        makeActiveDayOnCLick(event.target);
+
+        openDetailedSheduleForActiveDay(event.target);
+    })
+
+
+})
