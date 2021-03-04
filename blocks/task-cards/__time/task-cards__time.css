@@ -1,6 +1,6 @@
 .task-cards__time {
     margin: 0;
-    padding: 0 0 0 8px;
+    margin-left: auto;
     box-sizing: border-box;
     font-weight: 500;
     font-style: normal;

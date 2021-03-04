@@ -1,5 +1,6 @@
 .task-cards__task {
     margin: 0;
+    margin-left: 10px;
     box-sizing: border-box;
     max-width: 100px;
     text-overflow: ellipsis;
