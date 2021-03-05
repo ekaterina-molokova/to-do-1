@@ -63,38 +63,19 @@
                 </ul>
 
             </section>
+
+            <!-- дела за весь месяц -->
             <section class="task-cards">
                 <h2 class="task-cards__title">This month</h2>
-                <ul class="task-cards__container">
-                    <li class="task-cards__card">
-                        <button class="task-cards__complete-button" type="button" name="complete-button"></button>
-                        <h3 class="task-cards__task">New task</h3>
-                        <p class="task-cards__date">2nd March</p>
-                        <div class="task-cards__dot"></div>
-                        <p class="task-cards__time">12:00</p>
-                    </li>
-                </ul>
-        </section>
-        <section class="task-cards task-cards_selected-day">
-            <h2 class="task-cards__title">February <span class="current-day"></span></h2>
-            <ul class="task-cards__container">
-                <li class="task-cards__card_selected-day task-cards__card_selected-day">
-                    <div class="task-cards__row">
-                        <button class="task-cards__complete-button" type="button" name="complete-button"></button>
-                        <h3 class="task-cards__task">New task</h3>
-                        <p class="task-cards__date">February</p>
-                        <div class="task-cards__dot"></div>
-                        <p class="task-cards__time">12:00</p>
-                    </div>
-                    <div class="task-cards__row">
-                        <p class="task-cards__details">View details</p>
-                        <div class="task-cards__line">
-                            <button class="task-cards__delete-button" type="button" name="delete-button"></button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </section>
+                <ul class="task-cards__container"></ul>
+            </section>
+
+            <!-- дела конкретного дня -->
+            <section class="task-cards task-cards_selected-day">
+                <h2 class="task-cards__title">February <span class="current-day"></span></h2>
+                <ul class="task-cards__container"></ul>
+            </section>
+
         </main>
     </div>
     <section class="popup popup-event-preview">
@@ -140,11 +121,15 @@
                        value=""
                        name="date"
                        placeholder="Day"
+                       min="1"
+                       max="31"
                        required>
                 <input class="popup__input popup__month"
-                       type="text"
+                       type="number"
                        value=""
                        name="month"
+                       min="1"
+                       max="12"
                        placeholder="Month"
                        required>
                 <input class="popup__input popup__year"
@@ -152,6 +137,8 @@
                        value=""
                        name="year"
                        placeholder="Year"
+                       min="2021"
+                       max="2025"
                        required>
             </fieldset>
             <label class="popup__label" for="time">Time</label>
@@ -159,8 +146,11 @@
                    id="time"
                    type="time"
                    value=""
+                   list
                    name="time"
                    placeholder="00:00"
+                   min="00:00"
+                   max="23:59"
                    required>
             <label class="popup__label" for="color">Choose color</label>
             <input class="popup__color"
@@ -179,16 +169,18 @@
             <p class="task-cards__date"></p>
             <div class="task-cards__dot"></div>
             <p class="task-cards__time"></p>
+            <p class="hidden-description" hidden></p>
         </li>
     </template>
+
     <template class="template-task-card-big">
-        <li class="task-cards__card_selected-day">
+        <li class="task-cards__card_selected-day task-cards__card_selected-day">
             <div class="task-cards__row">
                 <button class="task-cards__complete-button" type="button" name="complete-button"></button>
-                <h3 class="task-cards__task">New task</h3>
-                <p class="task-cards__date">2nd March</p>
+                <h3 class="task-cards__task"></h3>
+                <p class="task-cards__date">Today</p>
                 <div class="task-cards__dot"></div>
-                <p class="task-cards__time">12:00</p>
+                <p class="task-cards__time"></p>
             </div>
             <div class="task-cards__row">
                 <p class="task-cards__details">View details</p>
@@ -196,6 +188,7 @@
                     <button class="task-cards__delete-button" type="button" name="delete-button"></button>
                 </div>
             </div>
+            <p class="hidden-description" hidden></p>
         </li>
     </template>
 </body>

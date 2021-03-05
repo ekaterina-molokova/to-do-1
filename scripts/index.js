@@ -3,6 +3,7 @@
 const newTaskPopup = document.querySelector(".popup_new-task");
 const newTaskFormElement = newTaskPopup.querySelector(".popup__new-task-form");
 const openNewTaskPopupButton = document.querySelector(".header__add-button");
+
 const topicInput = newTaskFormElement.querySelector(".popup__topic");
 const descriptionInput = newTaskFormElement.querySelector(".popup__description");
 const dateInput = newTaskFormElement.querySelector(".popup__date");
@@ -10,6 +11,7 @@ const monthInput = newTaskFormElement.querySelector(".popup__month");
 const yearInput = newTaskFormElement.querySelector(".popup__year");
 const timeInput = newTaskFormElement.querySelector(".popup__time");
 const colorInput = newTaskFormElement.querySelector(".popup__color");
+
 const createNewTaskButton = newTaskFormElement.querySelector(".popup__add-button");
 
     // экран 1 (список дел)
@@ -31,6 +33,16 @@ const dayTaskTime = taskCardDayView.querySelector(".task-cards__time");
     // переменные дней-дат
 const dayDatesList = document.querySelectorAll(".calendar__date");
 
+    // объект, который хранит дела
+let templateDataObj = {
+    'title': '',
+    'description': '',
+    'date': '',
+    'time': '',
+}
+
+const dataTasks = [];
+
 // Функции
     // открыть модальное окно "добавить новое дело"
 function openNewTaskPopup(newTaskPopup) {
@@ -43,7 +55,6 @@ function closeNewTaskPopup(newTaskPopup) {
     newTaskPopup.classList.remove("popup_opened");
     document.removeEventListener("keydown", closeViaEsc);
     newTaskFormElement.reset();
-    // colorInput.value = "#E3B65B";
 }
 
     // закрытие модального окна по кнопке escape
@@ -54,26 +65,65 @@ function closeViaEsc(evt) {
     }
 }
 
-    // опубликовать картчоку нового дела
-function submitNewTaskPopup(evt) {
+// входная функция после нажатия кнопки ADD в форме
+function submitNewTask(evt) {
     evt.preventDefault();
 
-    // желательно перейти в функцию, которая генерирует эти самые картчоки из template-ов
-    // в не собирается все это:
+    const newTaskInfo = {
+        'title' : topicInput.value, 
+        'description' : descriptionInput.value, 
+        'date' : dateInput.value,
+        'time' : timeInput.value,
+    }
+    // сохраняем новые данные в массив тасков в виде нового объекта
+    dataTasks.push(newTaskInfo);
 
-    monthTaskName.textContent = topicInput.value;
-    dayTaskName.textContent = topicInput.value;
-    monthTaskDate.textContent = dateInput.value + " " + monthInput.value;
-    dayTaskDate.textContent = dateInput.value + " " + monthInput.value;
-    monthTaskTime.textContent = timeInput.value;
-    dayTaskTime.textContent = timeInput.value;
+    // фильтруем массив dataTasks с помощью filter
+    // filterTasks(dataTasks);
 
-    // затем это выкидывается в верстку (сейчас это заменяет нашу карточку, которая по умолчанию висит (болванка) )
+    // создадим массив плашек включая новую из отсортированного массива
+    const arrayOfTasksHtml = dataTasks.map(data => {
+        return generateHTMLPlate(data);
+    })
+    
+    // закидываем в верстку плашки в правильном порядке
+    // костыль
+    monthTaskList.textContent = '';
+    monthTaskList.append(...arrayOfTasksHtml);
+    
+    
     closeNewTaskPopup(newTaskPopup);
 }
 
+// заполняем плашку инфой из массива тасков
+function generateHTMLPlate({title, description, date, time}) {
+    // эта функция будет наполняться ивент-листенерами
+    const cardItemTemplate = document.querySelector('.template-task-card-min').content;
+    const cardElement = cardItemTemplate.querySelector('.task-cards__card').cloneNode(true);
 
-// Никита
+    const taskTitle = cardElement.querySelector('.task-cards__task');
+    const taskDate = cardElement.querySelector('.task-cards__date');
+    const taskTime = cardElement.querySelector('.task-cards__time');
+    const taskHiddenDescription = cardElement.querySelector('.hidden-description');
+
+    taskTitle.textContent = title;
+    taskDate.textContent = date;
+    taskTime.textContent = time;
+    taskHiddenDescription.textContent = description;
+
+    return cardElement;
+}
+
+function filterTasks(arr) {
+    arr.filter(item => {
+        console.log(item);
+    })
+}
+
+
+
+
+
     // сделать кликнутую дату активной (фон-кружочек)
 function makeActiveDayOnCLick(cell) {
     // если у тебя нету ни одной выбранной даты при старте, то у тебя ломается скрипт, т.к тут Null ловится, надо по другому проверять через if
@@ -89,7 +139,7 @@ function openDetailedSheduleForActiveDay(day) {
     const currentDayNumber = taskCardDayView.querySelector(".current-day");
     currentDayNumber.textContent = day.textContent;
 
-    // октрытие модалки
+    // открытие самой модалки (экран 2)
     taskCardDayView.classList.add("popup_opened")
 }
 
@@ -105,7 +155,9 @@ newTaskPopup.addEventListener("click", function (evt){
     }
 });
     // слушатель сабмит кнопки формы "добавить новое дело"
-newTaskFormElement.addEventListener("submit", submitNewTaskPopup);
+newTaskFormElement.addEventListener("submit", (event) => {
+    submitNewTask(event);
+});
 
     // дни-даты, при клике кружок
 dayDatesList.forEach(date => {
@@ -114,6 +166,38 @@ dayDatesList.forEach(date => {
 
         openDetailedSheduleForActiveDay(event.target);
     })
-
-
 })
+
+
+
+
+
+
+
+
+// на полях
+
+// зашли в форму, заполнили, делаем сабмит (попали в общую функцию, из которой будут запускаться нижние пункты)
+// дальнейшая очередность действий
+// 1) Свести инпуты в объект-таск, объект-таск закинуть в массив тасков
+    // итого на этом шаге у нас есть "правильный" массив js объектов с тасками
+// 2) Выбросить этот массив в верстку
+    // 2.1) при выбросе в верстку ты его отсортируешь и отфильтруешь в хронологическом порядке
+        // фильтр нужен при заливе по конкретной дате (дела конкретного дня) 
+    // 2.2) Этот массив надо промапить и получить массив хтмл элементов (плашек), готовых к выбросу в верстку 
+        // 2.2.1) нужна функция, которая собирает плашку + навешивает листенеры по ходу дела этот элемент обрастает листенерами (иконка удаления, иконка комплита + нажатие на плашку, которое выводит нам превью плашки)
+    // выбрасываешь его в верстку
+
+// Эти элементы будут на плашке "дела текущего месяца"
+
+// При нажатии на дату у нас открывается маленькое окошко с делами "текущего дня"
+// у нас уже есть объект из пункта 2 выше
+// делаем его копию и обрезаем его filter-ом так, чтобы в нем были только те таски, которые имеют нужную дату
+// высыпаем это в верстку при открытии (таким образом мы свяжем дату и дела конкретного дня)
+// скорее всего придется сверять дату на которую нажал (может быть она станет "фильтром")
+
+// Кидаю так же скрин, чтобы ты понимал, что такое "дела текущего месяца" и "дела текущего дня"
+
+// дату формируем так: 
+    // let a = new Date(год, месяц, день, час, минута)
+// час и минуту берем как value.split(':')
