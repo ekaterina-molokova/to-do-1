@@ -1,5 +1,4 @@
 .task-cards__row {
-    /* margin: 0 0 28px 0; */
     padding: 0;
     box-sizing: border-box;
     display: flex;
@@ -11,7 +10,3 @@
 .task-cards__row:last-of-type {
     margin-top: 28px;
 }
-
-/* .task-cards__row:last-of-type {
-    margin-bottom: 0;
-} */

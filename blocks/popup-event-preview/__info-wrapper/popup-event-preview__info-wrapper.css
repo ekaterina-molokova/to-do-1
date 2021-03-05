@@ -1,19 +1,14 @@
 .popup-event-preview__info-wrapper {
   display: flex;
-  padding-bottom: 30px;
-  padding-left: 19px;
-  padding-right: 21px;
-
+  padding: 0 21px 30px 19px;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   /* identical to box height */
-
   background-image: url(../../../images/calendar-icon.svg);
   background-size: 21px 21px;
   background-repeat: no-repeat;
   background-position: 10px top;
-
   color: #050505;
 }

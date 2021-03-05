@@ -4,19 +4,15 @@
   font-size: 14px;
   line-height: 16px;
   /* identical to box height */
-
   letter-spacing: 0.761905px;
-
   color: #DFDFE4;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
 }
 
 .calendar__date:hover {
-  opacity: 0.6;
+  opacity: .5;
 }

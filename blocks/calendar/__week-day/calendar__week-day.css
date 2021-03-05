@@ -1,14 +1,11 @@
 .calendar__week-day {
   margin-left: 24px;
-  /* font-family: Raleway; */
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 16px;
-
   text-align: justify;
   letter-spacing: 0.761905px;
-
   color: #DFDFE4;
 }
 

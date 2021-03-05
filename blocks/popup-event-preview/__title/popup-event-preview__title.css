@@ -1,16 +1,13 @@
 .popup-event-preview__title {
   position: relative;
-  margin: 0;
-  margin-bottom: 17px;
+  margin: 0 0 17px 0;
   font-style: normal;
   padding-left: 30px;
   font-weight: bold;
   font-size: 18px;
   line-height: 21px;
   /* identical to box height */
-
   text-align: justify;
-
   color: #050505;
 }
 
@@ -21,9 +18,7 @@
   height: 3px;
   right: 34px;
   top: 8px;
-
   mix-blend-mode: normal;
-  opacity: 0.36;
+  opacity: .36;
   background-color: #979797;
-
 }

@@ -14,5 +14,5 @@
 
 .task-cards__complete-button:hover {
     cursor: pointer;
-    background-image: url('../../../images/Object\ \(1\).svg');
+    background-image: url("../../../images/Object (1).svg");
 }

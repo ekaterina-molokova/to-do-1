@@ -1,15 +1,12 @@
 .current-month {
-  margin: 0;
-  margin-bottom: 22px;
+  margin: 0 0 22px 0;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 18px;
   /* identical to box height */
-  
   text-align: justify;
   cursor: pointer;
-  
   color: #FFFFFF;
 }
 
