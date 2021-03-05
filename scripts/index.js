@@ -44,7 +44,7 @@ let templateDataObj = {
     'time': '',
 }
 
-const dataTasks = [];
+const dataTasksArray = [];
 
 // Функции
     // открыть модальное окно "добавить новое дело"
@@ -85,10 +85,12 @@ function closeViaEsc(evt) {
 
 
 
-// входная функция после нажатия кнопки ADD в форме
-function submitNewTask(evt) {
-    evt.preventDefault();
 
+
+
+// Шаг 1
+// сохраняем новые данные в массив тасков в виде нового объекта
+function saveNewTaskToMemoryArray() {
     const newTaskInfo = {
         'title' : topicInput.value, 
         'description' : descriptionInput.value, 
@@ -96,27 +98,23 @@ function submitNewTask(evt) {
         'time' : timeInput.value,
     }
     // сохраняем новые данные в массив тасков в виде нового объекта
-    dataTasks.push(newTaskInfo);
-
-    // фильтруем массив dataTasks с помощью filter
-    // filterTasks(dataTasks);
-
-    // создадим массив плашек включая новую из отсортированного массива
-    const arrayOfTasksHtml = dataTasks.map(data => {
-        return generateHTMLPlate(data);
-    })
-    
-    // закидываем в верстку плашки в правильном порядке
-    // костыль
-    monthTaskList.textContent = '';
-    monthTaskList.append(...arrayOfTasksHtml);
-    
-    
-    closeNewTaskPopup(newTaskPopup);
+    dataTasksArray.push(newTaskInfo);
 }
 
-// заполняем плашку инфой из массива тасков
-function generateHTMLPlate({title, description, date, time}) {
+// Шаг 2
+// функция собирает массив плашек-тасков
+function getHTMLArrayOfPlates(rawTasksArr) {
+    const arrayOfHTMLPlates = rawTasksArr.map((rawTaskObj, indexOfThisObj) => {
+        // index понадобится потом, чтобы создавать некий id по которому потом мы удалим таск
+        return generatePlate(rawTaskObj);
+    })
+
+    return arrayOfHTMLPlates;
+}
+
+// Шаг 3
+// заполняем html плашку инфой из массива тасков
+function generatePlate({title, description, date, time}) {
     // эта функция будет наполняться ивент-листенерами
     const cardItemTemplate = document.querySelector('.template-task-card-min').content;
     const cardElement = cardItemTemplate.querySelector('.task-cards__card').cloneNode(true);
@@ -126,6 +124,8 @@ function generateHTMLPlate({title, description, date, time}) {
     const taskTime = cardElement.querySelector('.task-cards__time');
     const taskHiddenDescription = cardElement.querySelector('.hidden-description');
 
+
+    //! нормально подсовывать дату, чтобы было потом на оснвании чего фильтровать
     taskTitle.textContent = title;
     taskDate.textContent = date;
     taskTime.textContent = time;
@@ -134,15 +134,19 @@ function generateHTMLPlate({title, description, date, time}) {
     return cardElement;
 }
 
+// Шаг 4, сортировка, фильтрация, пока никак не используетсяы
 function filterTasks(arr) {
     arr.filter(item => {
         console.log(item);
     })
 }
 
-
-
-
+// Шаг 5
+// отрисовываем готовые плашки тасков, рендеринг
+function renderTasksPlates(arrayOfReadyPlates) {
+    monthTaskList.textContent = '';
+    monthTaskList.append(...arrayOfReadyPlates);
+}
 
 
 
@@ -191,10 +195,38 @@ eventPreviewPopup.addEventListener("click", function (evt){
     }
     });
 
+
+
+
+
+//!
     // слушатель сабмит кнопки формы "добавить новое дело"
 newTaskFormElement.addEventListener("submit", (event) => {
-    submitNewTask(event);
+    event.preventDefault();
+
+    // Шаг 1
+    // сохраняем новые данные в массив тасков в виде нового объекта
+    saveNewTaskToMemoryArray();
+
+    // Шаг 2
+    // создадим массив HTML плашек включая новую из массива тасков
+    const arrayOfHTMLPlates = getHTMLArrayOfPlates(dataTasksArray);
+
+    // Шаг 3
+    // отрисовываем готовые плашки тасков, рендеринг
+    renderTasksPlates(arrayOfHTMLPlates)
+    
+    // Закрываем модальное окно
+    closeNewTaskPopup(newTaskPopup);
 });
+
+
+
+
+
+
+
+
 
     // дни-даты, при клике кружок
 dayDatesList.forEach(date => {
