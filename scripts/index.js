@@ -1,6 +1,7 @@
 // Переменные
     // окно "добавить новое дело"
 const newTaskPopup = document.querySelector(".popup_new-task");
+const eventPreviewPopup = document.querySelector(".popup-event-preview");
 const newTaskFormElement = newTaskPopup.querySelector(".popup__new-task-form");
 const openNewTaskPopupButton = document.querySelector(".header__add-button");
 
@@ -29,8 +30,10 @@ const dayTaskList = taskCardDayView.querySelector(".task-cards__container");
 const dayTaskName = taskCardDayView.querySelector(".task-cards__task");
 const dayTaskDate = taskCardDayView.querySelector(".task-cards__date");
 const dayTaskTime = taskCardDayView.querySelector(".task-cards__time");
+const dayTaskDetails = taskCardDayView.querySelector(".task-cards__details");
 
     // переменные дней-дат
+const currentMonth = document.querySelector(".current-month");
 const dayDatesList = document.querySelectorAll(".calendar__date");
 
     // объект, который хранит дела
@@ -50,11 +53,23 @@ function openNewTaskPopup(newTaskPopup) {
     document.addEventListener("keydown", closeViaEsc);
 }
 
+// открыть модальное окно "развернутая карточка с деталями"
+function openEventPreviewPopup(eventPreviewPopup) {
+    eventPreviewPopup.classList.add("popup_opened");
+    document.addEventListener("keydown", closeViaEsc);
+}
+
     // закрыть модальное окно "добавить новое дело"
 function closeNewTaskPopup(newTaskPopup) {
     newTaskPopup.classList.remove("popup_opened");
     document.removeEventListener("keydown", closeViaEsc);
     newTaskFormElement.reset();
+}
+
+// закрыть модальное окно "развернутая карточка с деталями"
+function closeEventPreviewPopup(eventPreviewPopup) {
+    eventPreviewPopup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", closeViaEsc);
 }
 
     // закрытие модального окна по кнопке escape
@@ -154,6 +169,13 @@ newTaskPopup.addEventListener("click", function (evt){
         closeNewTaskPopup (newTaskPopup);
     }
 });
+
+eventPreviewPopup.addEventListener("click", function (evt){
+    if(evt.target.classList.contains("popup")) {
+        closeEventPreviewPopup(eventPreviewPopup);
+    }
+    });
+
     // слушатель сабмит кнопки формы "добавить новое дело"
 newTaskFormElement.addEventListener("submit", (event) => {
     submitNewTask(event);
@@ -201,3 +223,15 @@ dayDatesList.forEach(date => {
 // дату формируем так: 
     // let a = new Date(год, месяц, день, час, минута)
 // час и минуту берем как value.split(':')
+
+
+dayTaskDetails.addEventListener("click", ()=> {
+    openEventPreviewPopup(eventPreviewPopup);
+});
+
+currentMonth.addEventListener("click", () => {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+        openedPopup.classList.remove("popup_opened");
+    }
+});

@@ -152,12 +152,18 @@
                    min="00:00"
                    max="23:59"
                    required>
-            <label class="popup__label" for="color">Choose color</label>
-            <input class="popup__color"
-                   id="color"
-                   type="color"
-                   value="#E3B65B"
-                   name="color">
+            <label class="popup__label popup__label_pseudo" for="color">
+                <input class="popup__color"
+                       id="color"
+                       type="color"
+                       value="#E3B65B"
+                       name="color">
+                <div class="popup__row">
+                    <span class="popup__label-text">Choose color</span>
+                    <button class="popup__question_button"></button>
+                </div>
+                <span class="popup__pseudo-input"></span>
+            </label>
             <button class="popup__add-button">Add</button>
         </form>
     </section>
