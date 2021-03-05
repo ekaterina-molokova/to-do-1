@@ -19,13 +19,10 @@
   background-size: 27px;
   background-position: 108px 11px;
   cursor: pointer;
-
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-
-  
 }
 
 .popup-event-preview__delete-button:hover {
-  opacity: 0.7;
+  opacity: .5;
 }
