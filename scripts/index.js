@@ -6,6 +6,9 @@ const newTaskFormElement = newTaskPopup.querySelector(".popup__new-task-form");
 const openNewTaskPopupButton = document.querySelector(".header__add-button");
 const closeNewTaskPopupButton = newTaskPopup.querySelector(".popup__close-button");
 const closeEventPreviewPopupButton = eventPreviewPopup.querySelector(".popup__close-button_event-preview");
+const deleteEventPreviewButton = document.querySelector(".popup-event-preview__delete-button");
+const deleteDetailedCardButton = document.querySelector(".task-cards__delete-button");
+const completeButtons = document.querySelectorAll(".task-cards__complete-button");
 
 const topicInput = newTaskFormElement.querySelector(".popup__topic");
 const descriptionInput = newTaskFormElement.querySelector(".popup__description");
@@ -15,8 +18,6 @@ const yearInput = newTaskFormElement.querySelector(".popup__year");
 const timeInput = newTaskFormElement.querySelector(".popup__time");
 const colorInput = newTaskFormElement.querySelector(".popup__color");
 const colorPseudoInput = newTaskFormElement.querySelector(".popup__pseudo-input");
-const deleteEventPreviewButton = document.querySelector(".popup-event-preview__delete-button");
-const deleteDetailedCardButton = document.querySelector(".task-cards__delete-button");
 
 const createNewTaskButton = newTaskFormElement.querySelector(".popup__add-button");
 
@@ -69,6 +70,12 @@ deleteDetailedCardButton.addEventListener("click", function(evt) {
     const targetElement = event.target;
     const targetItem = targetElement.closest(".task-cards__card_selected-day");
     targetItem.remove();
+});
+
+completeButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+        button.classList.toggle("task-cards__complete-button_active");
+    });
 });
 
 //!
