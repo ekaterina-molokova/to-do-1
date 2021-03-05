@@ -1,6 +1,6 @@
 .popup-container {
   width: 335px;
-  height: 282px;
+  height: 300px;
   padding-top: 19px;
   padding-left: 19px;
   padding-right: 21px;
@@ -11,4 +11,6 @@
 
   border-radius: 3px;
 
+  display: flex;
+  flex-direction: column;
 }

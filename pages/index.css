@@ -71,5 +71,6 @@
 @import url("../blocks/popup/__close-button/_event-preview/popup__close-button_event-preview.css");
 
 @import url("../blocks/current-day/current-day.css");
+@import url("../blocks/popup-event-preview/__row/popup-event-preview__row.css");
 
 

@@ -1,14 +1,15 @@
 .popup-event-preview__label {
   /* font-family: Raleway; */
   display: inline-block;
-  margin-bottom: 29px;
+  /* margin-bottom: 29px; */
+  margin-left: 10px;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
   line-height: 16px;
   /* identical to box height */
   
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   text-align: justify;
 
   color: #050505;

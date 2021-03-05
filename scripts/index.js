@@ -26,7 +26,7 @@ const monthTaskList = taskCardMonthView.querySelector(".task-cards__container");
     // экран 2 (список дел)
 const taskCardDayView = document.querySelector(".task-cards_selected-day");
 const dayTaskList = taskCardDayView.querySelector(".task-cards__container");
-
+const dayTaskDetails = taskCardDayView.querySelector(".task-cards__details");
 
     // переменные дней-дат
 const currentMonth = document.querySelector(".current-month");
@@ -54,7 +54,27 @@ colorInput.onchange = function() {
     colorPseudoInput.style.backgroundColor = colorInput.value;
 }
 
+//!
+// заполняем модальное окно свежими данными
+function fillEventPreviewPopupWithTaskData(popup, currentTaskPlate) {
+    // popup data
+    const popupTitle = popup.querySelector('.popup-event-preview__title');
+    const popupDate = popup.querySelector('.popup-event-preview__preview-date');
+    const popupTime = popup.querySelector('.popup-event-preview__preview-time');
+    const popupDescription = popup.querySelector('.popup-event-preview__event-description');
 
+    // current task plate data
+    const currentTaskPlateTaskName = currentTaskPlate.querySelector(".task-cards__task");
+    const currentTaskPlateTaskDate = currentTaskPlate.querySelector(".task-cards__date");
+    const currentTaskPlateTaskTime = currentTaskPlate.querySelector(".task-cards__time");
+    const currentTaskPlateTaskDetails = currentTaskPlate.querySelector(".hidden-description");
+
+    // new data
+    popupTitle.textContent = currentTaskPlateTaskName.textContent;
+    popupDate.textContent = currentTaskPlateTaskDate.textContent;
+    popupTime.textContent = currentTaskPlateTaskTime.textContent;
+    popupDescription.textContent = currentTaskPlateTaskDetails.textContent;
+}
 
 
 const hashCode = (data) => {
@@ -173,6 +193,8 @@ function openDetailedSheduleForActiveDay(day) {
     taskCardDayView.classList.add("popup_opened")
 }
 
+
+
 // Слушатели
 
 openNewTaskPopupButton.addEventListener("click", () => {
@@ -214,13 +236,6 @@ dayDatesList.forEach(date => {
 })
 
 
-// Временно закоментировал Катин листенер, конфликтуют..
-
-// dayTaskDetails.addEventListener("click", ()=> {
-//     openEventPreviewPopup(eventPreviewPopup);
-// });
-
-
     // переключение между экраном 1 и экраном 2
 currentMonth.addEventListener("click", () => {
     const openedPopup = document.querySelector(".popup_opened");
@@ -232,6 +247,12 @@ currentMonth.addEventListener("click", () => {
     activeDateCell.classList.toggle("calendar__date_active");
 });
 
+dayTaskDetails.addEventListener("click", (event)=> {
+    const taskPlate = event.target.closest('.task-cards__card_selected-day');
+    fillEventPreviewPopupWithTaskData(eventPreviewPopup, taskPlate);
+
+    openPopup(eventPreviewPopup);
+});
 
 
 
