@@ -209,6 +209,10 @@ closeEventPreviewPopupButton.addEventListener("click", () => {
     closePopup(eventPreviewPopup);
 });
 
+colorInput.addEventListener("input", function () {
+    colorPseudoInput.style.backgroundColor = colorInput.value;
+});
+
 //!
     // слушатель сабмит кнопки формы "добавить новое дело"
 newTaskFormElement.addEventListener("submit", (event) => {
