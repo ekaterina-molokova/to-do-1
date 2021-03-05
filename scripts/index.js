@@ -36,15 +36,8 @@ const dayTaskDetails = taskCardDayView.querySelector(".task-cards__details");
 const currentMonth = document.querySelector(".current-month");
 const dayDatesList = document.querySelectorAll(".calendar__date");
 
-    // объект, который хранит дела
-let templateDataObj = {
-    'title': '',
-    'description': '',
-    'date': '',
-    'time': '',
-}
-
 const dataTasksArray = [];
+const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Функции
     // открыть модальное окно "добавить новое дело"
@@ -83,10 +76,13 @@ function closeViaEsc(evt) {
 
 
 
-
-
-
-
+const hashCode = (data) => {
+    return [...data.split("")].reduce((hash, char) => {
+        const charCode = char.charCodeAt(0)
+        const code = ((hash<<3) - hash * 2)+charCode;
+        return +code & +code;
+    }, 0).toString()
+}
 
 // Шаг 1
 // сохраняем новые данные в массив тасков в виде нового объекта
@@ -94,9 +90,10 @@ function saveNewTaskToMemoryArray() {
     const newTaskInfo = {
         'title' : topicInput.value, 
         'description' : descriptionInput.value, 
-        'date' : dateInput.value,
-        'time' : timeInput.value,
+        'dateObj' : new Date(`${yearInput.value}, ${monthInput.value}, ${dateInput.value}, ${timeInput.value}:00`),
+        'hash': hashCode(`${yearInput.value}, ${monthInput.value}, ${dateInput.value}, ${timeInput.value}:00`),
     }
+    console.log(newTaskInfo);
     // сохраняем новые данные в массив тасков в виде нового объекта
     dataTasksArray.push(newTaskInfo);
 }
@@ -104,8 +101,8 @@ function saveNewTaskToMemoryArray() {
 // Шаг 2
 // функция собирает массив плашек-тасков
 function getHTMLArrayOfPlates(rawTasksArr) {
-    const arrayOfHTMLPlates = rawTasksArr.map((rawTaskObj, indexOfThisObj) => {
-        // index понадобится потом, чтобы создавать некий id по которому потом мы удалим таск
+    const arrayOfHTMLPlates = rawTasksArr.map((rawTaskObj) => {
+        console.log(rawTaskObj);
         return generatePlate(rawTaskObj);
     })
 
@@ -114,7 +111,8 @@ function getHTMLArrayOfPlates(rawTasksArr) {
 
 // Шаг 3
 // заполняем html плашку инфой из массива тасков
-function generatePlate({title, description, date, time}) {
+function generatePlate({title, description, dateObj}) {
+
     // эта функция будет наполняться ивент-листенерами
     const cardItemTemplate = document.querySelector('.template-task-card-min').content;
     const cardElement = cardItemTemplate.querySelector('.task-cards__card').cloneNode(true);
@@ -124,28 +122,52 @@ function generatePlate({title, description, date, time}) {
     const taskTime = cardElement.querySelector('.task-cards__time');
     const taskHiddenDescription = cardElement.querySelector('.hidden-description');
 
-
-    //! нормально подсовывать дату, чтобы было потом на оснвании чего фильтровать
+    console.log(dateObj);
     taskTitle.textContent = title;
-    taskDate.textContent = date;
-    taskTime.textContent = time;
+    taskDate.textContent = `${month[dateObj.getMonth()]} ${dateObj.getDate()}`;
+    taskTime.textContent = `${getPrettyTime(dateObj.getHours())}:${getPrettyTime(dateObj.getMinutes())}`;
     taskHiddenDescription.textContent = description;
+    
 
     return cardElement;
 }
 
-// Шаг 4, сортировка, фильтрация, пока никак не используетсяы
+function getPrettyTime(time) {
+    if (time < 10) {
+        return `0${time}`
+    } else {
+        return time;
+    }
+}
+
+
+// Шаг 4, сортировка, фильтрация, пока никак не используется
 function filterTasks(arr) {
-    arr.filter(item => {
-        console.log(item);
-    })
+    // console.log(arr);
+
+    // const newArr = arr.filter(item => {
+    //     console.log(item);
+
+    //     return true;
+    // })
+
+    // return newArr;
 }
 
 // Шаг 5
 // отрисовываем готовые плашки тасков, рендеринг
-function renderTasksPlates(arrayOfReadyPlates) {
+function renderTasksPlates(tasksArray) {
+
+    // запуск фильтрации
+    const filteredArrayOfTasks = filterTasks(tasksArray);
+    console.log(filteredArrayOfTasks);
+
+    // создадим массив HTML плашек включая новую из массива тасков
+    const arrayOfHTMLPlates = getHTMLArrayOfPlates(filteredArrayOfTasks);
+
+    
     monthTaskList.textContent = '';
-    monthTaskList.append(...arrayOfReadyPlates);
+    monthTaskList.append(...arrayOfHTMLPlates);
 }
 
 
@@ -159,12 +181,14 @@ function renderTasksPlates(arrayOfReadyPlates) {
 
 
     // сделать кликнутую дату активной (фон-кружочек)
-function makeActiveDayOnCLick(cell) {
-    // если у тебя нету ни одной выбранной даты при старте, то у тебя ломается скрипт, т.к тут Null ловится, надо по другому проверять через if
-    const oldActiveCell = document.querySelector(".calendar__date_active");
-    oldActiveCell.classList.toggle("calendar__date_active");
+function makeActiveDayOnCLick(currentDateCell) {
+    const oldActiveDateCell = document.querySelector(".calendar__date_active");
 
-    cell.classList.toggle("calendar__date_active");
+    currentDateCell.classList.toggle("calendar__date_active");
+
+    if (currentDateCell !== oldActiveDateCell) {
+        oldActiveDateCell.classList.toggle("calendar__date_active");
+    }
 }
 
 function openDetailedSheduleForActiveDay(day) {
@@ -193,7 +217,7 @@ eventPreviewPopup.addEventListener("click", function (evt){
     if(evt.target.classList.contains("popup")) {
         closeEventPreviewPopup(eventPreviewPopup);
     }
-    });
+});
 
 
 
@@ -203,18 +227,14 @@ eventPreviewPopup.addEventListener("click", function (evt){
     // слушатель сабмит кнопки формы "добавить новое дело"
 newTaskFormElement.addEventListener("submit", (event) => {
     event.preventDefault();
-
+    
     // Шаг 1
     // сохраняем новые данные в массив тасков в виде нового объекта
     saveNewTaskToMemoryArray();
 
     // Шаг 2
-    // создадим массив HTML плашек включая новую из массива тасков
-    const arrayOfHTMLPlates = getHTMLArrayOfPlates(dataTasksArray);
-
-    // Шаг 3
     // отрисовываем готовые плашки тасков, рендеринг
-    renderTasksPlates(arrayOfHTMLPlates)
+    renderTasksPlates(dataTasksArray);
     
     // Закрываем модальное окно
     closeNewTaskPopup(newTaskPopup);
@@ -251,6 +271,9 @@ currentMonth.addEventListener("click", () => {
     if (openedPopup) {
         openedPopup.classList.remove("popup_opened");
     }
+
+    const activeDateCell = document.querySelector(".calendar__date_active");
+    activeDateCell.classList.toggle("calendar__date_active");
 });
 
 
