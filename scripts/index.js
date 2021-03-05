@@ -15,6 +15,8 @@ const yearInput = newTaskFormElement.querySelector(".popup__year");
 const timeInput = newTaskFormElement.querySelector(".popup__time");
 const colorInput = newTaskFormElement.querySelector(".popup__color");
 const colorPseudoInput = newTaskFormElement.querySelector(".popup__pseudo-input");
+const deleteEventPreviewButton = document.querySelector(".popup-event-preview__delete-button");
+const deleteDetailedCardButton = document.querySelector(".task-cards__delete-button");
 
 const createNewTaskButton = newTaskFormElement.querySelector(".popup__add-button");
 
@@ -53,6 +55,21 @@ function closeNewTaskPopup(newTaskPopup) {
 colorInput.onchange = function() {
     colorPseudoInput.style.backgroundColor = colorInput.value;
 }
+
+deleteEventPreviewButton.addEventListener("click", function(evt) {
+    const targetElement = event.target;
+    const targetItem = targetElement.closest(".popup-container");
+    targetItem.remove();
+    closePopup(eventPreviewPopup);
+    const detailedCard = document.querySelector(".task-cards__card_selected-day");
+    detailedCard.remove();
+});
+
+deleteDetailedCardButton.addEventListener("click", function(evt) {
+    const targetElement = event.target;
+    const targetItem = targetElement.closest(".task-cards__card_selected-day");
+    targetItem.remove();
+});
 
 //!
 // заполняем модальное окно свежими данными
