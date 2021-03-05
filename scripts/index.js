@@ -1,15 +1,10 @@
 // Переменные
     // окно "добавить новое дело"
 const newTaskPopup = document.querySelector(".popup_new-task");
-const eventPreviewPopup = document.querySelector(".popup-event-preview");
-const newTaskFormElement = newTaskPopup.querySelector(".popup__new-task-form");
 const openNewTaskPopupButton = document.querySelector(".header__add-button");
 const closeNewTaskPopupButton = newTaskPopup.querySelector(".popup__close-button");
-const closeEventPreviewPopupButton = eventPreviewPopup.querySelector(".popup__close-button_event-preview");
-const deleteEventPreviewButton = document.querySelector(".popup-event-preview__delete-button");
-const deleteDetailedCardButton = document.querySelector(".task-cards__delete-button");
-const completeButtons = document.querySelectorAll(".task-cards__complete-button");
 
+const newTaskFormElement = newTaskPopup.querySelector(".popup__new-task-form");
 const topicInput = newTaskFormElement.querySelector(".popup__topic");
 const descriptionInput = newTaskFormElement.querySelector(".popup__description");
 const dateInput = newTaskFormElement.querySelector(".popup__date");
@@ -18,65 +13,54 @@ const yearInput = newTaskFormElement.querySelector(".popup__year");
 const timeInput = newTaskFormElement.querySelector(".popup__time");
 const colorInput = newTaskFormElement.querySelector(".popup__color");
 const colorPseudoInput = newTaskFormElement.querySelector(".popup__pseudo-input");
-
 const createNewTaskButton = newTaskFormElement.querySelector(".popup__add-button");
 
-    // экран 1 (список дел)
+    // кнопки complete и delete
+const deleteDetailedCardButton = document.querySelector(".task-cards__delete-button");
+const completeButtons = document.querySelectorAll(".task-cards__complete-button");
+
+    // окно "превью текущего дела"
+const eventPreviewPopup = document.querySelector(".popup-event-preview");
+const closeEventPreviewPopupButton = eventPreviewPopup.querySelector(".popup__close-button_event-preview");
+const deleteEventPreviewButton = document.querySelector(".popup-event-preview__delete-button");
+
+    // экран 1 (список дел на месяц)
 const taskCardMonthView = document.querySelector(".task-cards");
 const monthTaskList = taskCardMonthView.querySelector(".task-cards__container");
 
-
-    // экран 2 (список дел)
+    // экран 2 (список дел на конкретный день) (мини-модальное окно)
 const taskCardDayView = document.querySelector(".task-cards_selected-day");
 const dayTaskList = taskCardDayView.querySelector(".task-cards__container");
 const dayTaskDetails = taskCardDayView.querySelector(".task-cards__details");
 
-    // переменные дней-дат
+    // переключатели дат (активный день) + вернуться к делам на месяц
 const currentMonth = document.querySelector(".current-month");
 const dayDatesList = document.querySelectorAll(".calendar__date");
 
+    // место хранение наших "дел"
 const dataTasksArray = [];
+    // словарик
 const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Функции
-
+    // открыть попап
 function openPopup(popup) {
     popup.classList.add("popup_opened");
 }
-
+    // закрыть попап
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
 }
-
+    // закрыть попап "добавить новое дело"
 function closeNewTaskPopup(newTaskPopup) {
     closePopup(newTaskPopup);
     newTaskFormElement.reset();
 }
 
+    // смена цвета инпут-цвет
 colorInput.onchange = function() {
     colorPseudoInput.style.backgroundColor = colorInput.value;
 }
-
-deleteEventPreviewButton.addEventListener("click", function(evt) {
-    const targetElement = event.target;
-    const targetItem = targetElement.closest(".popup-container");
-    targetItem.remove();
-    closePopup(eventPreviewPopup);
-    const detailedCard = document.querySelector(".task-cards__card_selected-day");
-    detailedCard.remove();
-});
-
-deleteDetailedCardButton.addEventListener("click", function(evt) {
-    const targetElement = event.target;
-    const targetItem = targetElement.closest(".task-cards__card_selected-day");
-    targetItem.remove();
-});
-
-completeButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-        button.classList.toggle("task-cards__complete-button_active");
-    });
-});
 
 //!
 // заполняем модальное окно свежими данными
@@ -100,7 +84,7 @@ function fillEventPreviewPopupWithTaskData(popup, currentTaskPlate) {
     popupDescription.textContent = currentTaskPlateTaskDetails.textContent;
 }
 
-
+    // создать уникальный хэш
 const hashCode = (data) => {
     return [...data.split("")].reduce((hash, char) => {
         const charCode = char.charCodeAt(0)
@@ -109,7 +93,6 @@ const hashCode = (data) => {
     }, 0).toString()
 }
 
-// Шаг 1
 // сохраняем новые данные в массив тасков в виде нового объекта
 function saveNewTaskToMemoryArray() {
     const newTaskInfo = {
@@ -123,7 +106,6 @@ function saveNewTaskToMemoryArray() {
     dataTasksArray.push(newTaskInfo);
 }
 
-// Шаг 2
 // функция собирает массив плашек-тасков
 function getHTMLArrayOfPlates(rawTasksArr) {
     const arrayOfHTMLPlates = rawTasksArr.map((rawTaskObj) => {
@@ -134,7 +116,6 @@ function getHTMLArrayOfPlates(rawTasksArr) {
     return arrayOfHTMLPlates;
 }
 
-// Шаг 3
 // заполняем html плашку инфой из массива тасков
 function generatePlate({title, description, dateObj}) {
 
@@ -156,7 +137,7 @@ function generatePlate({title, description, dateObj}) {
 
     return cardElement;
 }
-
+    // предоставление часов и минут в красивом виде
 function getPrettyTime(time) {
     if (time < 10) {
         return `0${time}`
@@ -166,7 +147,7 @@ function getPrettyTime(time) {
 }
 
 
-// Шаг 4, сортировка, фильтрация, пока никак не используется
+// сортировка, фильтрация, пока никак не используется!
 function filterTasks(arr) {
     console.log(arr);
 
@@ -179,7 +160,6 @@ function filterTasks(arr) {
     return newArr;
 }
 
-// Шаг 5
 // отрисовываем готовые плашки тасков, рендеринг
 function renderTasksPlates(tasksArray) {
 
@@ -207,6 +187,7 @@ function makeActiveDayOnCLick(currentDateCell) {
     }
 }
 
+    // открыть модальное окно "дела для выбранного дня"
 function openDetailedSheduleForActiveDay(day) {
 
     // подстановка числа в тайтл модального окна
@@ -282,33 +263,26 @@ dayTaskDetails.addEventListener("click", (event)=> {
     openPopup(eventPreviewPopup);
 });
 
+    // слушатель кнопок удаления (попап)
+deleteEventPreviewButton.addEventListener("click", function(evt) {
+    const targetElement = event.target;
+    const targetItem = targetElement.closest(".popup-container");
+    targetItem.remove();
+    closePopup(eventPreviewPopup);
+    const detailedCard = document.querySelector(".task-cards__card_selected-day");
+    detailedCard.remove();
+});
 
+    // слушатель кнопок удаления (на карточке)
+deleteDetailedCardButton.addEventListener("click", function(evt) {
+    const targetElement = event.target;
+    const targetItem = targetElement.closest(".task-cards__card_selected-day");
+    targetItem.remove();
+});
 
-
-// на полях
-
-// зашли в форму, заполнили, делаем сабмит (попали в общую функцию, из которой будут запускаться нижние пункты)
-// дальнейшая очередность действий
-// 1) Свести инпуты в объект-таск, объект-таск закинуть в массив тасков
-    // итого на этом шаге у нас есть "правильный" массив js объектов с тасками
-// 2) Выбросить этот массив в верстку
-    // 2.1) при выбросе в верстку ты его отсортируешь и отфильтруешь в хронологическом порядке
-        // фильтр нужен при заливе по конкретной дате (дела конкретного дня) 
-    // 2.2) Этот массив надо промапить и получить массив хтмл элементов (плашек), готовых к выбросу в верстку 
-        // 2.2.1) нужна функция, которая собирает плашку + навешивает листенеры по ходу дела этот элемент обрастает листенерами (иконка удаления, иконка комплита + нажатие на плашку, которое выводит нам превью плашки)
-    // выбрасываешь его в верстку
-
-// Эти элементы будут на плашке "дела текущего месяца"
-
-// При нажатии на дату у нас открывается маленькое окошко с делами "текущего дня"
-// у нас уже есть объект из пункта 2 выше
-// делаем его копию и обрезаем его filter-ом так, чтобы в нем были только те таски, которые имеют нужную дату
-// высыпаем это в верстку при открытии (таким образом мы свяжем дату и дела конкретного дня)
-// скорее всего придется сверять дату на которую нажал (может быть она станет "фильтром")
-
-// Кидаю так же скрин, чтобы ты понимал, что такое "дела текущего месяца" и "дела текущего дня"
-
-// дату формируем так: 
-    // let a = new Date(год, месяц, день, час, минута)
-// час и минуту берем как value.split(':')
-
+    // слушатель комплит-кнопок
+completeButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+        button.classList.toggle("task-cards__complete-button_active");
+    });
+});
