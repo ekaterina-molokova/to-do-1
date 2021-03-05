@@ -21,19 +21,12 @@ const createNewTaskButton = newTaskFormElement.querySelector(".popup__add-button
     // экран 1 (список дел)
 const taskCardMonthView = document.querySelector(".task-cards");
 const monthTaskList = taskCardMonthView.querySelector(".task-cards__container");
-// const monthCard надо сделать так, чтобы все 3 переменные ниже искались не в taskCardMonthView, а в конкретной карточке (записка для себя, пока не реализовывать), могут быть проблемы
-// так же эти 3 переменные можно вообще закинуть в функцию, которая их генерирует
-const monthTaskName = taskCardMonthView.querySelector(".task-cards__task");
-const monthTaskDate = taskCardMonthView.querySelector(".task-cards__date");
-const monthTaskTime = taskCardMonthView.querySelector(".task-cards__time");
+
 
     // экран 2 (список дел)
 const taskCardDayView = document.querySelector(".task-cards_selected-day");
 const dayTaskList = taskCardDayView.querySelector(".task-cards__container");
-const dayTaskName = taskCardDayView.querySelector(".task-cards__task");
-const dayTaskDate = taskCardDayView.querySelector(".task-cards__date");
-const dayTaskTime = taskCardDayView.querySelector(".task-cards__time");
-const dayTaskDetails = taskCardDayView.querySelector(".task-cards__details");
+
 
     // переменные дней-дат
 const currentMonth = document.querySelector(".current-month");
@@ -131,15 +124,15 @@ function getPrettyTime(time) {
 
 // Шаг 4, сортировка, фильтрация, пока никак не используется
 function filterTasks(arr) {
-    // console.log(arr);
+    console.log(arr);
 
-    // const newArr = arr.filter(item => {
-    //     console.log(item);
+    const newArr = arr.filter(item => {
+        console.log(item);
 
-    //     return true;
-    // })
+        return true;
+    })
 
-    // return newArr;
+    return newArr;
 }
 
 // Шаг 5
@@ -147,6 +140,7 @@ function filterTasks(arr) {
 function renderTasksPlates(tasksArray) {
 
     // запуск фильтрации
+    // пока этот шаг бесполезен
     const filteredArrayOfTasks = filterTasks(tasksArray);
     console.log(filteredArrayOfTasks);
 
@@ -164,7 +158,7 @@ function makeActiveDayOnCLick(currentDateCell) {
 
     currentDateCell.classList.toggle("calendar__date_active");
 
-    if (currentDateCell !== oldActiveDateCell) {
+    if (currentDateCell !== oldActiveDateCell && oldActiveDateCell) {
         oldActiveDateCell.classList.toggle("calendar__date_active");
     }
 }
@@ -237,6 +231,10 @@ currentMonth.addEventListener("click", () => {
     const activeDateCell = document.querySelector(".calendar__date_active");
     activeDateCell.classList.toggle("calendar__date_active");
 });
+
+
+
+
 
 // на полях
 
