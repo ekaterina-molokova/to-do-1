@@ -14,6 +14,7 @@ const monthInput = newTaskFormElement.querySelector(".popup__month");
 const yearInput = newTaskFormElement.querySelector(".popup__year");
 const timeInput = newTaskFormElement.querySelector(".popup__time");
 const colorInput = newTaskFormElement.querySelector(".popup__color");
+const colorPseudoInput = newTaskFormElement.querySelector(".popup__pseudo-input");
 
 const createNewTaskButton = newTaskFormElement.querySelector(".popup__add-button");
 
@@ -61,6 +62,10 @@ function closePopup(popup) {
 function closeNewTaskPopup(newTaskPopup) {
     closePopup(newTaskPopup);
     newTaskFormElement.reset();
+}
+
+colorInput.onchange = function() {
+    colorPseudoInput.style.backgroundColor = colorInput.value;
 }
 
 // Шаг 1
