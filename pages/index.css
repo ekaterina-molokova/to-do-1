@@ -45,6 +45,7 @@
 @import url("../blocks/popup/__label/_pseudo/popup__label_pseudo.css");
 @import url("../blocks/popup/__question-button/popup__question-button.css");
 @import url("../blocks/popup/__row/popup__row.css");
+@import url("../blocks/popup/__close-button/popup__close-button.css");
 
 /*даты + дни недели, календарь*/
 @import url("../blocks/calendar/calendar.css");
@@ -67,6 +68,7 @@
 @import url("../blocks/popup-event-preview/__label/popup-event-preview__label.css");
 @import url("../blocks/popup-event-preview/__delete-button/popup-event-preview__delete-button.css");
 @import url("../blocks/popup/_opened/popup_opened.css");
+@import url("../blocks/popup/__close-button/_event-preview/popup__close-button_event-preview.css");
 
 @import url("../blocks/current-day/current-day.css");
 

@@ -4,6 +4,8 @@ const newTaskPopup = document.querySelector(".popup_new-task");
 const eventPreviewPopup = document.querySelector(".popup-event-preview");
 const newTaskFormElement = newTaskPopup.querySelector(".popup__new-task-form");
 const openNewTaskPopupButton = document.querySelector(".header__add-button");
+const closeNewTaskPopupButton = newTaskPopup.querySelector(".popup__close-button");
+const closeEventPreviewPopupButton = eventPreviewPopup.querySelector(".popup__close-button_event-preview");
 
 const topicInput = newTaskFormElement.querySelector(".popup__topic");
 const descriptionInput = newTaskFormElement.querySelector(".popup__description");
@@ -47,46 +49,19 @@ let templateDataObj = {
 const dataTasksArray = [];
 
 // Функции
-    // открыть модальное окно "добавить новое дело"
-function openNewTaskPopup(newTaskPopup) {
-    newTaskPopup.classList.add("popup_opened");
-    document.addEventListener("keydown", closeViaEsc);
+
+function openPopup(popup) {
+    popup.classList.add("popup_opened");
 }
 
-// открыть модальное окно "развернутая карточка с деталями"
-function openEventPreviewPopup(eventPreviewPopup) {
-    eventPreviewPopup.classList.add("popup_opened");
-    document.addEventListener("keydown", closeViaEsc);
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
 }
 
-    // закрыть модальное окно "добавить новое дело"
 function closeNewTaskPopup(newTaskPopup) {
-    newTaskPopup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", closeViaEsc);
+    closePopup(newTaskPopup);
     newTaskFormElement.reset();
 }
-
-// закрыть модальное окно "развернутая карточка с деталями"
-function closeEventPreviewPopup(eventPreviewPopup) {
-    eventPreviewPopup.classList.remove("popup_opened");
-    document.removeEventListener("keydown", closeViaEsc);
-}
-
-    // закрытие модального окна по кнопке escape
-function closeViaEsc(evt) {
-    if (evt.key === "Escape") {
-        const openedPopup = document.querySelector(".popup_opened");
-        openedPopup.classList.remove("popup_opened");
-    }
-}
-
-
-
-
-
-
-
-
 
 // Шаг 1
 // сохраняем новые данные в массив тасков в виде нового объекта
@@ -148,16 +123,6 @@ function renderTasksPlates(arrayOfReadyPlates) {
     monthTaskList.append(...arrayOfReadyPlates);
 }
 
-
-
-
-
-
-
-
-
-
-
     // сделать кликнутую дату активной (фон-кружочек)
 function makeActiveDayOnCLick(cell) {
     // если у тебя нету ни одной выбранной даты при старте, то у тебя ломается скрипт, т.к тут Null ловится, надо по другому проверять через if
@@ -178,26 +143,18 @@ function openDetailedSheduleForActiveDay(day) {
 }
 
 // Слушатели
-    // кнопка открытия модального окна "добавить новое дело"
+
 openNewTaskPopupButton.addEventListener("click", () => {
-    openNewTaskPopup(newTaskPopup)
+    openPopup(newTaskPopup);
 });
 
-newTaskPopup.addEventListener("click", function (evt){
-    if(evt.target.classList.contains("popup")) {
-        closeNewTaskPopup (newTaskPopup);
-    }
+closeNewTaskPopupButton.addEventListener("click", () => {
+    closeNewTaskPopup(newTaskPopup);
 });
 
-eventPreviewPopup.addEventListener("click", function (evt){
-    if(evt.target.classList.contains("popup")) {
-        closeEventPreviewPopup(eventPreviewPopup);
-    }
-    });
-
-
-
-
+closeEventPreviewPopupButton.addEventListener("click", () => {
+    closePopup(eventPreviewPopup);
+});
 
 //!
     // слушатель сабмит кнопки формы "добавить новое дело"
@@ -219,14 +176,6 @@ newTaskFormElement.addEventListener("submit", (event) => {
     // Закрываем модальное окно
     closeNewTaskPopup(newTaskPopup);
 });
-
-
-
-
-
-
-
-
 
     // дни-даты, при клике кружок
 dayDatesList.forEach(date => {
@@ -252,11 +201,6 @@ currentMonth.addEventListener("click", () => {
         openedPopup.classList.remove("popup_opened");
     }
 });
-
-
-
-
-
 
 // на полях
 
