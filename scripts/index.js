@@ -191,6 +191,18 @@ dayDatesList.forEach(date => {
 })
 
 
+// Временно закоментировал Катины листенеры, конфликтуют..
+
+// dayTaskDetails.addEventListener("click", ()=> {
+//     openEventPreviewPopup(eventPreviewPopup);
+// });
+
+// currentMonth.addEventListener("click", () => {
+//     const openedPopup = document.querySelector(".popup_opened");
+//     if (openedPopup) {
+//         openedPopup.classList.remove("popup_opened");
+//     }
+// });
 
 
 
@@ -224,14 +236,3 @@ dayDatesList.forEach(date => {
     // let a = new Date(год, месяц, день, час, минута)
 // час и минуту берем как value.split(':')
 
-
-dayTaskDetails.addEventListener("click", ()=> {
-    openEventPreviewPopup(eventPreviewPopup);
-});
-
-currentMonth.addEventListener("click", () => {
-    const openedPopup = document.querySelector(".popup_opened");
-    if (openedPopup) {
-        openedPopup.classList.remove("popup_opened");
-    }
-});
