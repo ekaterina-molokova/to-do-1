@@ -80,6 +80,11 @@ function closeViaEsc(evt) {
     }
 }
 
+
+
+
+
+
 // входная функция после нажатия кнопки ADD в форме
 function submitNewTask(evt) {
     evt.preventDefault();
@@ -139,6 +144,16 @@ function filterTasks(arr) {
 
 
 
+
+
+
+
+
+
+
+
+
+
     // сделать кликнутую дату активной (фон-кружочек)
 function makeActiveDayOnCLick(cell) {
     // если у тебя нету ни одной выбранной даты при старте, то у тебя ломается скрипт, т.к тут Null ловится, надо по другому проверять через if
@@ -191,18 +206,20 @@ dayDatesList.forEach(date => {
 })
 
 
-// Временно закоментировал Катины листенеры, конфликтуют..
+// Временно закоментировал Катин листенер, конфликтуют..
 
 // dayTaskDetails.addEventListener("click", ()=> {
 //     openEventPreviewPopup(eventPreviewPopup);
 // });
 
-// currentMonth.addEventListener("click", () => {
-//     const openedPopup = document.querySelector(".popup_opened");
-//     if (openedPopup) {
-//         openedPopup.classList.remove("popup_opened");
-//     }
-// });
+
+    // переключение между экраном 1 и экраном 2
+currentMonth.addEventListener("click", () => {
+    const openedPopup = document.querySelector(".popup_opened");
+    if (openedPopup) {
+        openedPopup.classList.remove("popup_opened");
+    }
+});
 
 
 
