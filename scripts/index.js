@@ -64,10 +64,6 @@ function closeNewTaskPopup(newTaskPopup) {
     newTaskFormElement.reset();
 }
 
-colorInput.onchange = function() {
-    colorPseudoInput.style.backgroundColor = colorInput.value;
-}
-
 // Шаг 1
 // сохраняем новые данные в массив тасков в виде нового объекта
 function saveNewTaskToMemoryArray() {
@@ -159,6 +155,10 @@ closeNewTaskPopupButton.addEventListener("click", () => {
 
 closeEventPreviewPopupButton.addEventListener("click", () => {
     closePopup(eventPreviewPopup);
+});
+
+colorInput.addEventListener("input", function () {
+    colorPseudoInput.style.backgroundColor = colorInput.value;
 });
 
 //!
