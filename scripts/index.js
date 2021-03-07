@@ -18,6 +18,7 @@ const colorPseudoInput = newTaskFormElement.querySelector('.popup__pseudo-input'
 const eventPreviewPopup = document.querySelector('.popup-event-preview');
 const closeEventPreviewPopupButton = eventPreviewPopup.querySelector('.popup__close-button_event-preview');
 const deleteEventPreviewButton = document.querySelector('.popup-event-preview__delete-button');
+const completeEventPreviewPopupButton = eventPreviewPopup.querySelector(".task-cards__complete-button");
 
     // экран 1 ("список дел на месяц)
 const taskCardMonthView = document.querySelector('.task-cards');
@@ -390,6 +391,10 @@ deleteEventPreviewButton.addEventListener("click", function(event) {
 
     const detailedCard = document.querySelector(".task-cards__card_selected-day");
     detailedCard.remove();
+});
+
+completeEventPreviewPopupButton.addEventListener("click", function() {
+    completeEventPreviewPopupButton.classList.toggle("task-cards__complete-button_active");
 });
 
 
