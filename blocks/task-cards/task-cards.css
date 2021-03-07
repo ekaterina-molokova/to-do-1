@@ -6,6 +6,6 @@
     height: 300px;
     width: 375px;
     overflow: hidden;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
