@@ -13,7 +13,6 @@ const yearInput = newTaskFormElement.querySelector(".popup__year");
 const timeInput = newTaskFormElement.querySelector(".popup__time");
 const colorInput = newTaskFormElement.querySelector(".popup__color");
 const colorPseudoInput = newTaskFormElement.querySelector(".popup__pseudo-input");
-const createNewTaskButton = newTaskFormElement.querySelector(".popup__add-button");
 
     // окно "превью текущего дела"
 const eventPreviewPopup = document.querySelector(".popup-event-preview");
@@ -53,11 +52,6 @@ function closePopup(popup) {
 function closeNewTaskPopup(newTaskPopup) {
     closePopup(newTaskPopup);
     newTaskFormElement.reset();
-}
-
-    // смена цвета инпут-цвет
-colorInput.onchange = function() {
-    colorPseudoInput.style.backgroundColor = colorInput.value;
 }
 
 //!
@@ -261,7 +255,7 @@ function makeActiveDayOnCLick(currentDateCell) {
 
     // открыть модальное окно "дела для выбранного дня"
 function openDetailedSheduleForActiveDay(day) {
-
+    taskCardMonthView.setAttribute("style", "display: none");
     // подстановка числа в тайтл модального окна
     const currentDayNumber = taskCardDayView.querySelector(".current-day");
     currentDayNumber.textContent = day.textContent;
@@ -333,11 +327,12 @@ dayDatesList.forEach(date => {
 
     // переключение между экраном 1 и экраном 2 (дела на месяц и дела на день)
 currentMonth.addEventListener("click", () => {
+    taskCardMonthView.setAttribute("style", "display: flex");
     const openedPopup = document.querySelector(".popup_opened");
 
     if (openedPopup) {
         openedPopup.classList.remove("popup_opened");
-    }  
+    }
     
     // фильтруем таски по месяцу
     const tasks = filterTasksByMonth(1);

@@ -3,10 +3,9 @@
     margin: 0 auto;
     padding: 20px 0 25px 0;
     box-sizing: border-box;
-    min-height: 264px;
-    /* overflow: hidden; */
+    height: 300px;
+    width: 375px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 375px;
-    position: fixed;
 }
