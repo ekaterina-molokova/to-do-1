@@ -1,6 +1,6 @@
 .body {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   box-sizing: border-box;
   background: linear-gradient(to right, #0019ff, #c779c2);
   font-family: 'Inter', 'Arial', sans-serif;

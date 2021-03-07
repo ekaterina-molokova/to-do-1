@@ -219,6 +219,8 @@ function makeActiveDayOnCLick(currentDateCell) {
 
     // открыть модальное окно "дела для выбранного дня"
 function openDetailedSheduleForActiveDay(day) {
+    //! катино
+    taskCardMonthView.setAttribute("style", "display: none");
 
     // подстановка числа в тайтл модального окна
     const currentDayNumber = taskCardDayView.querySelector(".current-day");
@@ -341,11 +343,12 @@ dayDatesList.forEach(date => {
 
     // переключение между экраном 1 и экраном 2 (дела на месяц и дела на день)
 currentMonth.addEventListener("click", () => {
+    taskCardMonthView.setAttribute("style", "display: flex");
     const openedPopup = document.querySelector(".popup_opened");
 
     if (openedPopup) {
         openedPopup.classList.remove("popup_opened");
-    }  
+    }
     
     // фильтруем таски по месяцу
     const tasks = filterTasksByMonth(1);

@@ -4,4 +4,5 @@
     box-sizing: border-box;
     width: 303px;
     list-style: none;
+    overflow: auto;
 }
